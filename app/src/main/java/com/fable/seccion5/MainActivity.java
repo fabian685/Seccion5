@@ -2,8 +2,11 @@ package com.fable.seccion5;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +14,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private ListView ListaVistas;
+    private List<String> ListaElementos;
+    private List<String> ListaNombres;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         ListaVistas = findViewById(R.id.ListaVistas);
 
         //Datos a mostrar
-        List<String> ListaElementos = new ArrayList<String>();
+        ListaElementos = new ArrayList<String>();
         ListaElementos.add("Fabián");
         ListaElementos.add("Leidy");
         ListaElementos.add("Amparo");
@@ -36,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         ListaElementos.add("Muñeca");
         ListaElementos.add("Chelsea");
 
-        List<String> ListaNombres = new ArrayList<String>() {{
+        ListaNombres = new ArrayList<String>() {{
             add("Yoly");
             add("Arturo");
             add("Magnolia");
@@ -50,5 +55,11 @@ public class MainActivity extends AppCompatActivity {
         //Se establece el adaptador en la Lista de Vista
         ListaVistas.setAdapter(Adaptador);
 
+        ListaVistas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, "Presionado: " + ListaElementos.get(position), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
