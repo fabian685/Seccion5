@@ -3,8 +3,10 @@ package com.fable.seccion5;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> Adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ListaElementos);
         //R.layout.support_simple_spinner_dropdown_item
 
-        //Se establece el adaptador en la Lista de Vista
+        //Se establece el adaptador en la Lista de Vistas
         ListaVistas.setAdapter(Adaptador);
 
         ListaVistas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -61,5 +63,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Presionado: " + ListaElementos.get(position), Toast.LENGTH_LONG).show();
             }
         });
+
+        //Se enlaza el adaptador personalizado
+        Adaptador oAdaptador = new Adaptador(this, R.layout.lista_items, ListaElementos);
+        ListaVistas.setAdapter(oAdaptador);
     }
 }
