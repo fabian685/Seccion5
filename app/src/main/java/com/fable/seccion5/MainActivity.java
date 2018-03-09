@@ -42,6 +42,16 @@ public class MainActivity extends AppCompatActivity {
         ListaElementos.add("Paz");
         ListaElementos.add("Muñeca");
         ListaElementos.add("Chelsea");
+        ListaElementos.add("Bryan");
+        ListaElementos.add("Jennifer");
+        ListaElementos.add("Sindy");
+        ListaElementos.add("LeidyM");
+        ListaElementos.add("Jonathan");
+        ListaElementos.add("Sahily");
+        ListaElementos.add("Miguel");
+        ListaElementos.add("GatoB");
+        ListaElementos.add("GatoL");
+
 
         ListaNombres = new ArrayList<String>() {{
             add("Yoly");
@@ -51,11 +61,11 @@ public class MainActivity extends AppCompatActivity {
         }};
 
         //Adaptador, la forma visual en que se muestran los datos
-        ArrayAdapter<String> Adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ListaElementos);
+        //ArrayAdapter<String> Adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ListaElementos);
         //R.layout.support_simple_spinner_dropdown_item
 
         //Se establece el adaptador en la Lista de Vistas
-        ListaVistas.setAdapter(Adaptador);
+        //ListaVistas.setAdapter(Adaptador);
 
         ListaVistas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

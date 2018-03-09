@@ -39,22 +39,46 @@ public class Adaptador extends BaseAdapter {
     @Override
     public View getView(int Posicion, View ConvertView, ViewGroup viewGroup) {
 
+        //Crear View Holder Pattern
+        PortaVista Porta;
+
         //Se copia la vista
         View v = ConvertView;
 
-        //Se infla la vista que ha llegado con el layout
+        if (v == null) {
+            //Se infla la vista que ha llegado con el layout
+            LayoutInflater PlantillaI = LayoutInflater.from(this.Contexto);
+            //v = PlantillaI.inflate(R.layout.lista_items, null);
+            v = PlantillaI.inflate(this.Plantilla, null);
+
+            Porta = new PortaVista();
+
+            //Se referencia el elemento a modificar y se rellena
+            Porta.VistaTexto = v.findViewById(R.id.VistaTexto);
+            v.setTag(Porta);
+        }
+        else {
+            Porta = (PortaVista) v.getTag();
+        }
+
+        /*//Se infla la vista que ha llegado con el layout
         LayoutInflater PlantillaI = LayoutInflater.from(this.Contexto);
-        v = PlantillaI.inflate(R.layout.lista_items, null);
+        v = PlantillaI.inflate(R.layout.lista_items, null);*/
 
         //Se trae el valor actual de la posición
         String NombreActual = Nombres.get(Posicion);
         //NombreActual = (String)getItem(Posicion);
 
-        //Se referencia el elemento a modificar y se rellena
+       /* //Se referencia el elemento a modificar y se rellena
         TextView VistaTexto = v.findViewById(R.id.VistaTexto);
-        VistaTexto.setText(NombreActual);
+        VistaTexto.setText(NombreActual);*/
+        Porta.VistaTexto.setText(NombreActual);
 
         //Se devuelve la vista inflada y modificada con los datos
-        return  v;
+        return v;
+    }
+
+    static class PortaVista{
+        private TextView VistaTexto;
     }
 }
